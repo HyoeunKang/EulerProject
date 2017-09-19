@@ -3,14 +3,14 @@ public class Problem27 {
 	static int result=Integer.MIN_VALUE;
 	static int[] arr = new int[1000];
 	public static void main(String[] args) {
-		//¼Ò¼öÈ®ÀÎÀ» À§ÇÑ ¹è¿­ »ı¼º. ¼Ò¼öÀÌ¸é °ªÀÌ -1
+		//ì†Œìˆ˜í™•ì¸ì„ ìœ„í•œ ë°°ì—´ ìƒì„±. ì†Œìˆ˜ì´ë©´ ê°’ì´ -1
 		for(int i=0; i<arr.length; i++) {
 			arr[i]=-1;
 		}
-		//¿¡¶óÅä½ºÅ×³×½ºÀÇ Ã¼ ¾Ë°í¸®Áò
+		//ì—ë¼í† ìŠ¤í…Œë„¤ìŠ¤ì˜ ì²´ ì•Œê³ ë¦¬ì¦˜
 		for(int i=2; i<arr.length; i++) { 
-			if(arr[i]==0) continue; //ÀÌ¹Ì Ã¼Å©µÈ ¼öÀÇ ¹è¼ö´Â È®ÀÎÇÏÁö ¾Ê´Â´Ù.
-			for(int j=i*2; j<arr.length; j+=i) { //i¸¦ Á¦¿ÜÇÑ iÀÇ ¹è¼öµéÀº 0À¸·Î Ã¼Å©
+			if(arr[i]==0) continue; //ì´ë¯¸ ì²´í¬ëœ ìˆ˜ì˜ ë°°ìˆ˜ëŠ” í™•ì¸í•˜ì§€ ì•ŠëŠ”ë‹¤.
+			for(int j=i*2; j<arr.length; j+=i) { //ië¥¼ ì œì™¸í•œ iì˜ ë°°ìˆ˜ë“¤ì€ 0ìœ¼ë¡œ ì²´í¬
 				arr[j]=0;
 			}
 		}
@@ -23,12 +23,12 @@ public class Problem27 {
 		int max_temp=0;
 		for(a=-999; a<1000; a++) {
 			for(b=2; b<1000; b++) {
-				if(arr[b]!=-1) continue; //b´Â ¼Ò¼ö¿©¾ß ÇÑ´Ù
-				if((a+b)%2==0||(-1*b)>=a) continue;
-				int temp= 1+a+b;//1+a+bµµ ¼Ò¼ö¿©¾ß ÇÑ´Ù.
+				if(arr[b]!=-1) continue; //bëŠ” ì†Œìˆ˜ì—¬ì•¼ í•œë‹¤
+				if((a+b)%2==0&&(-1*b)>=a) continue;
+				int temp= 1+a+b;//1+a+bë„ ì†Œìˆ˜ì—¬ì•¼ í•œë‹¤.
 				if(temp<0||temp>999||(arr[temp]!=-1)) continue;
-				//result¿Í »õ·Î °è»êÇÑ °ª Áß ¾î¶² °ÍÀÇ ¹üÀ§°¡ ´õ Å«°¡?
-				System.out.println("¿©±â:"+a+","+b);
+				//resultì™€ ìƒˆë¡œ ê³„ì‚°í•œ ê°’ ì¤‘ ì–´ë–¤ ê²ƒì˜ ë²”ìœ„ê°€ ë” í°ê°€?
+				System.out.println("ì—¬ê¸°:"+a+","+b);
 				max_temp = maxPrimenum(a, b);
 				if(result<max_temp) {
 					result=max_temp;
@@ -40,11 +40,11 @@ public class Problem27 {
 		return result;
 	}
 	static int maxPrimenum(int a, int b) {
-		//¼Ò¼ö´Â ¾îµğ¼­ ²÷±â´Â°¡?
+		//ì†Œìˆ˜ëŠ” ì–´ë””ì„œ ëŠê¸°ëŠ”ê°€?
 		int n=0;
 		for(n=0; ;n++) {
 			int temp = n*n+n*a+b;
-			if(temp<0||temp>999||arr[temp]==0) break; //À½¼ö°Å³ª ¼Ò¼ö°¡ ¾Æ´Ï¸é Á¾·á
+			if(temp<0||temp>999||arr[temp]==0) break; //ìŒìˆ˜ê±°ë‚˜ ì†Œìˆ˜ê°€ ì•„ë‹ˆë©´ ì¢…ë£Œ
 		}
 		return n-1;
 	}
